@@ -1,0 +1,113 @@
+﻿<Page
+    x:Class="Library.PageReaders"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Library"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d" Background="#36393F">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/AdditionalPageDictionary.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="AddButton" Content="Добавить читателя" Style="{StaticResource AdditionalPageButtonStyle}">
+                    <Button.Flyout>
+                        <Flyout x:Name="AddFlyout">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox x:Name="readerNameTB" PlaceholderText="Имя" Margin="5"/>
+                                    <TextBox x:Name="BirthYearTB" PlaceholderText="Год рождения" Margin="5"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="AddOK" Content="OK" Margin="5" Click="AddOK_Click"/>
+                                    <Button x:Name="AddCancel" Content="Отмена" Margin="5" Click="AddCancel_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button x:Name="DeleteButton" Content="Удалить читателя" Style="{StaticResource AdditionalPageButtonStyle}">
+                    <Button.Flyout>
+                        <Flyout x:Name="DeleteFlyout">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <TextBlock Text="Удалить читателя?" Margin="5"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="DeleteOK" Content="ОК" Margin="5" Click="DeleteOK_Click"/>
+                                    <Button x:Name="DeleteCancel" Content="Отмена" Margin="5" Click="DeleteCancel_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button x:Name="BorrowBook" Content="Выдать книгу" Click="BorrowBook_Click" Style="{StaticResource AdditionalPageButtonStyle}">
+                    <Button.Flyout>
+                        <Flyout x:Name="LendFlyout">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding lendBookDetails}">
+                                    <controls:DataGrid x:Name="lendBookGrid" Height="240" Width="415" Style="{StaticResource AdditionalPageDataGridStyle}">
+                                        <controls:DataGrid.Columns>
+                                            <controls:DataGridTextColumn Header="Номер" IsReadOnly="True" Binding="{Binding BookID}"/>
+                                            <controls:DataGridTextColumn Header="Название" IsReadOnly="True" Binding="{Binding Title}"/>
+                                            <controls:DataGridTextColumn Header="Автор" IsReadOnly="True" Binding="{Binding Author}"/>
+                                            <controls:DataGridTextColumn Header="Год издания" IsReadOnly="True" Binding="{Binding IssueYear}"/>
+                                        </controls:DataGrid.Columns>
+                                    </controls:DataGrid>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button x:Name="LendOK" Content="OK" Click="LendOK_Click" Margin="10"/>
+                                    <Button x:Name="LendCancel" Content="Отмена" Click="LendCancel_Click" Margin="10"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button x:Name="ReturnBook" Content="Вернуть книгу" Click="ReturnBook_Click" Style="{StaticResource AdditionalPageButtonStyle}">
+                    <Button.Flyout>
+                        <Flyout x:Name="ReturnFlyout">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding returnBookDetails}">
+                                    <controls:DataGrid x:Name="returnBookGrid" Height="240" Width="415" Style="{StaticResource AdditionalPageDataGridStyle}">
+                                        <controls:DataGrid.Columns>
+                                            <controls:DataGridTextColumn Header="Номер" IsReadOnly="True" Binding="{Binding BookID}"/>
+                                            <controls:DataGridTextColumn Header="Название" IsReadOnly="True" Binding="{Binding Title}"/>
+                                            <controls:DataGridTextColumn Header="Автор" IsReadOnly="True" Binding="{Binding Author}"/>
+                                            <controls:DataGridTextColumn Header="Год издания" IsReadOnly="True" Binding="{Binding IssueYear}"/>
+                                        </controls:DataGrid.Columns>
+                                    </controls:DataGrid>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button x:Name="ReturnOK" Content="OK" Click="ReturnOK_Click"  Margin="10"/>
+                                    <Button x:Name="ReturnCancel" Content="Отмена" Click="ReturnCancel_Click" Margin="10"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+            
+            <StackPanel HorizontalAlignment="Center">
+                <Border CornerRadius="10" BorderBrush="White" BorderThickness="2">
+                    <controls:DataGrid x:Name="readerView" RowEditEnding="readerView_RowEditEnding" SelectionMode="Single" Style="{StaticResource AdditionalPageDataGridStyle}">
+                        <controls:DataGrid.Columns>
+                            <controls:DataGridTextColumn Header="Номер читательского билета" IsReadOnly="True" Binding="{Binding ID}"/>
+                            <controls:DataGridTextColumn Header="Имя" Binding="{Binding ReaderName}"/>
+                            <controls:DataGridTextColumn Header="Год рождения" Binding="{Binding BirthYear}"/>
+                            <controls:DataGridTextColumn Header="Выданные книги" IsReadOnly="True" Binding="{Binding BorrowedBooks}"/>
+                        </controls:DataGrid.Columns>
+                    </controls:DataGrid>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+              
+    </Grid>
+</Page>
