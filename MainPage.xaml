@@ -27,8 +27,8 @@
     <Grid x:Name="parentGrid">
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name ="CatalogButton" Content="Каталог" Style="{StaticResource MainPageStyle}" Click="Catalog_Click"/>
-            <Button x:Name ="ReadersButton" Content="Читатели" Style="{StaticResource MainPageStyle}" Click="Readers_Click"/>
+            <Button x:Name ="CatalogButton" Content="Catalog" Style="{StaticResource MainPageStyle}" Click="Catalog_Click"/>
+            <Button x:Name ="ReadersButton" Content="Readers" Style="{StaticResource MainPageStyle}" Click="Readers_Click"/>
         </StackPanel>
 
         <VisualStateManager.VisualStateGroups>
