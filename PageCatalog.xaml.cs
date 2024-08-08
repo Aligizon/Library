@@ -58,7 +58,7 @@ namespace Library
                     catalogView.ItemsSource = Book.GetRecords();
                 }
                 else
-                    WarningDialog("Нельзя удалить выданную книгу");
+                    WarningDialog("Can't delete selected book");
             }
             Reader.resetId();
             DeleteFlyout.Hide();
