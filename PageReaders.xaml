@@ -20,7 +20,7 @@
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="AddButton" Content="Добавить читателя" Style="{StaticResource AdditionalPageButtonStyle}">
+                <Button x:Name="AddButton" Content="Add a reader" Style="{StaticResource AdditionalPageButtonStyle}">
                     <Button.Flyout>
                         <Flyout x:Name="AddFlyout">
                             <StackPanel Orientation="Vertical">
@@ -30,42 +30,42 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Button x:Name="AddOK" Content="OK" Margin="5" Click="AddOK_Click"/>
-                                    <Button x:Name="AddCancel" Content="Отмена" Margin="5" Click="AddCancel_Click"/>
+                                    <Button x:Name="AddCancel" Content="Cancel" Margin="5" Click="AddCancel_Click"/>
                                 </StackPanel>
                             </StackPanel>
                         </Flyout>
                     </Button.Flyout>
                 </Button>
-                <Button x:Name="DeleteButton" Content="Удалить читателя" Style="{StaticResource AdditionalPageButtonStyle}">
+                <Button x:Name="DeleteButton" Content="Delete a reader" Style="{StaticResource AdditionalPageButtonStyle}">
                     <Button.Flyout>
                         <Flyout x:Name="DeleteFlyout">
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                                <TextBlock Text="Удалить читателя?" Margin="5"/>
+                                <TextBlock Text="Delete the reader?" Margin="5"/>
                                 <StackPanel Orientation="Horizontal">
                                     <Button x:Name="DeleteOK" Content="ОК" Margin="5" Click="DeleteOK_Click"/>
-                                    <Button x:Name="DeleteCancel" Content="Отмена" Margin="5" Click="DeleteCancel_Click"/>
+                                    <Button x:Name="DeleteCancel" Content="Cancel" Margin="5" Click="DeleteCancel_Click"/>
                                 </StackPanel>
                             </StackPanel>
                         </Flyout>
                     </Button.Flyout>
                 </Button>
-                <Button x:Name="BorrowBook" Content="Выдать книгу" Click="BorrowBook_Click" Style="{StaticResource AdditionalPageButtonStyle}">
+                <Button x:Name="BorrowBook" Content="Check out a book" Click="BorrowBook_Click" Style="{StaticResource AdditionalPageButtonStyle}">
                     <Button.Flyout>
                         <Flyout x:Name="LendFlyout">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding lendBookDetails}">
                                     <controls:DataGrid x:Name="lendBookGrid" Height="240" Width="415" Style="{StaticResource AdditionalPageDataGridStyle}">
                                         <controls:DataGrid.Columns>
-                                            <controls:DataGridTextColumn Header="Номер" IsReadOnly="True" Binding="{Binding BookID}"/>
-                                            <controls:DataGridTextColumn Header="Название" IsReadOnly="True" Binding="{Binding Title}"/>
-                                            <controls:DataGridTextColumn Header="Автор" IsReadOnly="True" Binding="{Binding Author}"/>
-                                            <controls:DataGridTextColumn Header="Год издания" IsReadOnly="True" Binding="{Binding IssueYear}"/>
+                                            <controls:DataGridTextColumn Header="Number" IsReadOnly="True" Binding="{Binding BookID}"/>
+                                            <controls:DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Title}"/>
+                                            <controls:DataGridTextColumn Header="Author" IsReadOnly="True" Binding="{Binding Author}"/>
+                                            <controls:DataGridTextColumn Header="Year of publication" IsReadOnly="True" Binding="{Binding IssueYear}"/>
                                         </controls:DataGrid.Columns>
                                     </controls:DataGrid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <Button x:Name="LendOK" Content="OK" Click="LendOK_Click" Margin="10"/>
-                                    <Button x:Name="LendCancel" Content="Отмена" Click="LendCancel_Click" Margin="10"/>
+                                    <Button x:Name="LendCancel" Content="Cancel" Click="LendCancel_Click" Margin="10"/>
                                 </StackPanel>
                             </StackPanel>
                         </Flyout>
@@ -78,16 +78,16 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding returnBookDetails}">
                                     <controls:DataGrid x:Name="returnBookGrid" Height="240" Width="415" Style="{StaticResource AdditionalPageDataGridStyle}">
                                         <controls:DataGrid.Columns>
-                                            <controls:DataGridTextColumn Header="Номер" IsReadOnly="True" Binding="{Binding BookID}"/>
-                                            <controls:DataGridTextColumn Header="Название" IsReadOnly="True" Binding="{Binding Title}"/>
-                                            <controls:DataGridTextColumn Header="Автор" IsReadOnly="True" Binding="{Binding Author}"/>
-                                            <controls:DataGridTextColumn Header="Год издания" IsReadOnly="True" Binding="{Binding IssueYear}"/>
+                                            <controls:DataGridTextColumn Header="Number" IsReadOnly="True" Binding="{Binding BookID}"/>
+                                            <controls:DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Title}"/>
+                                            <controls:DataGridTextColumn Header="Author" IsReadOnly="True" Binding="{Binding Author}"/>
+                                            <controls:DataGridTextColumn Header="Year of publication" IsReadOnly="True" Binding="{Binding IssueYear}"/>
                                         </controls:DataGrid.Columns>
                                     </controls:DataGrid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <Button x:Name="ReturnOK" Content="OK" Click="ReturnOK_Click"  Margin="10"/>
-                                    <Button x:Name="ReturnCancel" Content="Отмена" Click="ReturnCancel_Click" Margin="10"/>
+                                    <Button x:Name="ReturnCancel" Content="Cancel" Click="ReturnCancel_Click" Margin="10"/>
                                 </StackPanel>
                             </StackPanel>
                         </Flyout>
@@ -99,10 +99,10 @@
                 <Border CornerRadius="10" BorderBrush="White" BorderThickness="2">
                     <controls:DataGrid x:Name="readerView" RowEditEnding="readerView_RowEditEnding" SelectionMode="Single" Style="{StaticResource AdditionalPageDataGridStyle}">
                         <controls:DataGrid.Columns>
-                            <controls:DataGridTextColumn Header="Номер читательского билета" IsReadOnly="True" Binding="{Binding ID}"/>
-                            <controls:DataGridTextColumn Header="Имя" Binding="{Binding ReaderName}"/>
-                            <controls:DataGridTextColumn Header="Год рождения" Binding="{Binding BirthYear}"/>
-                            <controls:DataGridTextColumn Header="Выданные книги" IsReadOnly="True" Binding="{Binding BorrowedBooks}"/>
+                            <controls:DataGridTextColumn Header="Library card number" IsReadOnly="True" Binding="{Binding ID}"/>
+                            <controls:DataGridTextColumn Header="Name" Binding="{Binding ReaderName}"/>
+                            <controls:DataGridTextColumn Header="Birth year" Binding="{Binding BirthYear}"/>
+                            <controls:DataGridTextColumn Header="All books" IsReadOnly="True" Binding="{Binding BorrowedBooks}"/>
                         </controls:DataGrid.Columns>
                     </controls:DataGrid>
                 </Border>
