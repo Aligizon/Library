@@ -74,16 +74,16 @@ namespace Library
                 }
                 else if (SelectionList.Count > 6)
                 {
-                    WarningDialog("Нельзя выдать больше 6 книг");
+                    WarningDialog("Can't check out more than 6 books");
                 }
                 else
                 {
-                    WarningDialog("Не выбрано ни одной книги");
+                    WarningDialog("Book isn't selected");
                 }
             }
             else
             {
-                WarningDialog("Для выдачи книг сначала выберите читателя");
+                WarningDialog("To give out books, first select a reader");
             }
 
             LendFlyout.Hide();
@@ -148,7 +148,7 @@ namespace Library
             }
             else
             {
-                WarningDialog("Выберите читателя");
+                WarningDialog("Select a reader");
                 ReturnFlyout.Hide();
             }
         }
